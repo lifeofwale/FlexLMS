@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"> 
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/floating-totop-button.min.css"> 
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+   
+   
+    
+    <title>LMS</title>
+  </head>
+  <body>
+  
+    <div class="container-fluid hero sticky-top">
+        <div class="row">
+           
+            
+          
+            <main class="col-sm-12 main-2 ">
+                <div class="row">
+                    <div class="col-sm-2 col-sm-2-not">
+                            <div class="aside__logo--2">
+                                    <img src="img/flex_logo.svg" alt="flex logo" class="aside__applogo">
+                                </div>
+                    </div>
+                    <div class="col-sm-10">
+                        <header class="main__header container-fluid d-flex align-items-center w-100">
+                            <ul class="nav flex-row mr-auto">
+                             <li class="nav-item">
+                                <a href="#" id="spin" class="aside__togglebar nav-link px-0"><img src="img/menu_koko.svg" alt="menu koko"></a>
+                              </li>
+                              <!-- <li class="nav-item">
+                                <a href="#" id="aside__toggle2" class="aside__togglebar nav-link px-0 d-none"><img src="img/menu_koko.svg" alt="menu koko"></a>
+                              </li>  -->
+                              <li class="nav-item d-flex ml-3">
+                                  <form action="" class="form-inline">
+                                        <input type="seacrh" class="form-control main__header--inputsearch align-self-center d-none d-sm-block" id="search__reveal" placeholder="Search courses...">
+                                        <button type="submit" class="btn bg-transparent"><img src="img/seacrh__icon.svg" alt="search koko"></button>
+                                  </form>
+                                
+                              </li>
+            
+                             
+                            </ul>
+                            <ul class="nav flex-row ml-auto align-items-center">
+                                <li class="nav-item dropdown align-self-center">
+                                  <a href="#" class="nav-link header__notify-2" id="header__notification" aria-expanded="false" data-toggle="dropdown" aria-haspopup="true">
+                                      <i class="fas fa-bell"></i>
+                                      <span class="count">7</span>
+                                  </a>
+                                  <div class="dropdown-menu dropdown-menu-right p-0 border-0 mt-3" aria-labelledby="header__notification">
+                                        <div class="card notification">
+                                                <div class="card-header notification__header">
+                                                        <i class="fas fa-bell mr-2"></i> Notifications
+                                                </div>
+                                                <div class="card-body notification__body">
+                                                        <a class="dropdown-item notification__a" href="#">
+                                                          
+                                                              <div class="d-flex align-items-center  notification__span align-content-center">
+                                                                    <div class="d-inline-block notification__tag mr-3">
+                                                                    </div>
+                                                              
+                                                                   <p>
+                                                                        New Course was added to your catalog.
+                                                                        <br>
+                                                                        <small>4 min ago</small>
+                                                                   </p>
+                                                               
+                                                              </div>
+                                                        </a>
+                                                        <a class="dropdown-item notification__a" href="#">
+                                                          
+                                                                <div class="d-flex align-items-center  notification__span-2 align-content-center">
+                                                                      <div class="d-inline-block notification__tag-2 mr-3">
+                                                                      </div>
+                                                                
+                                                                     <p>
+                                                                          New Course was added to your catalog.
+                                                                          <br>
+                                                                          <small>4 min ago</small>
+                                                                     </p>
+                                                                 
+                                                                </div>
+                                                          </a>
+                                                          <a class="dropdown-item notification__a" href="#">
+                                                          
+                                                                <div class="d-flex align-items-center notification__span-2 align-content-center">
+                                                                      <div class="d-inline-block notification__tag-2 mr-3">
+                                                                      </div>
+                                                                
+                                                                     <p>
+                                                                          New Course was added to your catalog.
+                                                                          <br>
+                                                                          <small>4 min ago</small>
+                                                                     </p>
+                                                                 
+                                                                </div>
+                                                          </a>
+                                                      
+                                                </div>
+                                                <div class="card-footer notification__footer text-center">
+                                                 <a href="#">View all notifications</a>
+                                                </div>
+                                              </div>
+                                  </div>
+                                </li>
+                                <li class="nav-item dropdown align-self-center">
+                                    <a href="#" class="nav-link header__user dropdown-toggle" id="header__userset" aria-expanded="false" data-toggle="dropdown" aria-haspopup="true">
+                                      <img src="svg/user__icon.svg" class="d-inline-block" alt="User__icon">
+                                       <span>Aderonke Ebun</span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right header__usernav" aria-labelledby="header__userset">
+                                        <p class="text-center">Aderonke Ebun</p>
+                                        <p class="text-center"><small>adminstrator@flexlms.ng</small></p>
+                                        <div class="dropdown-divider"></div>  
+                                        <a class="dropdown-item" href="#"> <span class="mr-3 align-middle"><img src="img/profile_drop.svg" alt="profile_icon"></span> Profile</a>
+                                        <a class="dropdown-item" href="#"><span class="mr-3"><img src="img/job__drop.svg" alt="job_icon"></span> Admin area</a>
+                                        <div class="dropdown-divider"></div>  
+                                        <a class="dropdown-item" href="#"><span class="mr-3"><img src="img/lock__drop.svg" alt="lock_icon"></span> Logout</a>
+                                    </div>
+                                  </li>
+                              </ul>
+                          </header>
+                        </div>
+                </div>
+             
+            </main>
+        </div>
+    </div>
+    <div class="container-fluid px-0 courseclass">
+        <div class="row no-gutters">
+            <aside class="col-xs-12 col-sm-3 col-lg-3 px-0 sideclass menu-sidebar  px-0 position-fixed" style="z-index:1030;">
+                <div class="sideclass__title">
+                    <h5>Big Data Analytics: Opportunities, Challenges and the Future</h5>
+                </div>
+                <ul class="nav flex-column">
+                    <li class="nav-item w-100">
+                   
+                        <a  class="nav-link sidemenulink w-100" href="#req-basic" data-toggle="collapse" aria-expanded="false" aria-controls="req-basic">
+                     <div class="clear-fix">
+                       
+                              <span class="menutitle float-left w-75">Introduction to big data and where it comes from
+                              </span><span class="float-right w-25 text-center"><i class="fas fa-check-circle clr__green" style="font-size:32px;"></i></span>
+                            
+                     </div>
+                          </a>
+                          <div class="collapse" id="req-basic">
+                              <ul class="nav flex-column">
+                                <li class="nav-item bg-white">
+                                  <a class="nav-link" href="#">
+                                      All Request</a>
+                                </li>
+                                <li class="nav-item bg-white">
+                                  <a class="nav-link" href="#">
+                                      Initiate Request</a>
+                                </li>
+                                <li class="nav-item bg-white">
+                                  <a class="nav-link" href="#">
+                                      Register New Patient</a>
+                                </li>
+                              </ul>
+                            </div>
+                      </li>
+                      <li class="nav-item w-100 active">
+                   
+                          <a  class="nav-link sidemenulink w-100 active" href="#req-basic-2" data-toggle="collapse" aria-expanded="false" aria-controls="req-basic-2">
+                       
+                              <span class="menutitle float-left w-75">Overview of the data analytics cycle
+                              </span><span class="float-right w-25 text-center"><i class="fas fa-check-circle clr__grey" style="font-size:32px;"></i></span>
+                            
+                            </a>
+                            <div class="collapse " id="req-basic-2">
+                                <ul class="nav flex-column">
+                                  <li class="nav-item bg-white">
+                                    <a class="nav-link" href="#">
+                                        All Request</a>
+                                  </li>
+                                  <li class="nav-item bg-white">
+                                    <a class="nav-link" href="#">
+                                        Initiate Request</a>
+                                  </li>
+                                  <li class="nav-item bg-white">
+                                    <a class="nav-link" href="#">
+                                        Register New Patient</a>
+                                  </li>
+                                </ul>
+                              </div>
+                        </li>
+                        <li class="nav-item w-100">
+                   
+                            <a  class="nav-link sidemenulink" href="#req-basic-3" data-toggle="collapse" aria-expanded="false" aria-controls="req-basic-3">
+                         
+                                <span class="menutitle float-left w-75">Social media platforms and types of data
+                                </span><span class="float-right w-25 text-center"><i class="fas fa-check-circle clr__grey" style="font-size:32px;"></i></span>
+                              
+                              </a>
+                              <div class="collapse " id="req-basic-3">
+                                  <ul class="nav flex-column">
+                                    <li class="nav-item bg-white">
+                                      <a class="nav-link" href="#">
+                                          All Request</a>
+                                    </li>
+                                    <li class="nav-item bg-white">
+                                      <a class="nav-link" href="#">
+                                          Initiate Request</a>
+                                    </li>
+                                    <li class="nav-item bg-white">
+                                      <a class="nav-link" href="#">
+                                          Register New Patient</a>
+                                    </li>
+                                  </ul>
+                                </div>
+                          </li>
+                </ul>
+              </aside>
+            <div class="col-lg-9 col-sm-9 col-md-9 col-xs-12 offset-lg-3 offset-md-3 class px-0">
+                <ul class="nav justify-content-between border-bottom class__ul">
+                    <li class="nav-item mr-auto class__li">
+                        <a href="#" class="nav-link class__a"><i class="fas fa-arrow-left mr-2"></i>Back to Course details</a>
+                    </li>
+                    <li class="nav-item">
+                            <a href="#" class="nav-link class__a" data-toggle="modal" data-target="#exampleModalCenter" >Review this course</a>
+                            <div class="modal fade bd-example-modal-lg tabletype__modal" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog tabletype__modal-dialog  modal-dialog-centered" role="document">
+                                  <div class="modal-content tabletype__modal-content">
+                                    <div class="modal-header tabletype__modal-header">
+                                      <h5 class="modal-title tabletype__modal-title" id="exampleModalCenterTitle">Review this course</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true"><i class="fas fa-times mt-4" style="color:white;"></i></span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body" style="padding-left:3rem;padding-right:3rem;">
+                                     
+                                      <h5 class="text-center" style=" font-size: 26px;
+                                      font-weight: 300;">
+                                          We would like your feedback on this course to improve learner experience.
+                                      </h5>
+                                      <div class="text-center my-5">
+                                        <img src="img/feedback__noun.svg" alt="feedback icon">
+                                      </div>
+                                      <h6 class="text-center" style="color: #ed347d;font-size: 16px;
+                                      font-weight: bold">HOW WOULD YOU RATE THIS COURSE?</h6>
+                                             <form action="#" >
+                                                <div class="d-flex justify-content-center my-4">
+                                                    <div class="star-rating">
+                                                        <div class="star-rating__wrap">
+                                                          <input class="star-rating__input" id="star-rating-5" type="radio" name="rating" value="5">
+                                                          <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-5" title="5 out of 5 stars"></label>
+                                                          <input class="star-rating__input" id="star-rating-4" type="radio" name="rating" value="4">
+                                                          <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-4" title="4 out of 5 stars"></label>
+                                                          <input class="star-rating__input" id="star-rating-3" type="radio" name="rating" value="3">
+                                                          <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-3" title="3 out of 5 stars"></label>
+                                                          <input class="star-rating__input" id="star-rating-2" type="radio" name="rating" value="2">
+                                                          <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-2" title="2 out of 5 stars"></label>
+                                                          <input class="star-rating__input" id="star-rating-1" type="radio" name="rating" value="1">
+                                                          <label class="star-rating__ico fa fa-star-o fa-lg" for="star-rating-1" title="1 out of 5 stars"></label>
+                                                        </div>
+                                                      </div>
+                                                </div>
+                                           
+                       
+                                                    <div class="form-group px-5 w-100">
+                                                          <label for="ControlTextarea" class="font-weight-bold">Please leave your feedback below:</label>
+                                                            <textarea class="form-control" id="ControlTextarea" rows="8"></textarea>
+                                                          </div>
+            
+                                                          <div class="d-flex justify-content-between px-5 my-5">
+                                                            <button class="btn btn__submit" style="min-width: 7rem;">NOT NOW</button>
+                                                            <button class="btn btn__submit" style="min-width: 7rem;">SEND FEEDBACK</button>
+                                                          </div>
+                                                   
+                                                  </form>
+                                    </div>
+                             
+                                  </div>
+                                </div>
+                              </div>
+                        </li>
+                        <li class="nav-item">
+                                <a href="#" class="nav-link class__a"><i class="far fa-comment-alt mr-3"></i>0 review</a>
+                            </li>
+                </ul>
+                <div class="container-fluid" style="height:calc(100vh - 142px);">
+                     <!-- you content goes here -->
+                </div>
+                <div class="comment px-5">
+                    <div class="container px-5">
+                     <h3> Comments</h3>
+                     <p class="empty_p"></p>
+                     <form action="#">
+                        <div class="form-group" style="margin-top:2rem;margin-bottom:8rem;font-size: 16px;">
+                          <textarea id="comment" class="form-control" rows="8" style="font-size: 16px;" autofocus>
+   
+                          </textarea>
+                          <div class="float-right mt-4">
+                             <button class="btn btn__submit"><i class="far fa-comments pr-3"></i>post comment</button>
+                           </div>
+                        </div>
+                      </form>
+                     <div class="comment__box px-5">
+                          <div class="media">
+                              <img class="mr-3" src="img/avatar.svg" alt="avatar __svg">
+                              <div class="media-body">
+                                <h5 class="mt-0">Johnpaul Okeke 	<span class="ml-1"> made a comment on</span><small class="pl-2">14/12/19</small> </h5>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                              </div>
+                            </div>
+                                 <div class="media reply__comment"  id="replies">
+                              <img class="mr-3" src="img/avatar.svg" alt="avatar __svg">
+                              <div class="media-body">
+                                <h5 class="mt-0">Johnpaul Okeke 	<span class="ml-1"> replied on</span><small class="pl-2">14/12/19</small> </h5>
+                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                              </div>
+                            </div>
+                            <form action="#" id="replies">
+                                <div class="form-group" style="margin-top:2rem;margin-bottom:8rem;font-size: 16px;">
+                                  <textarea id="comment" class="form-control" rows="4" style="font-size: 16px;" autofocus>
+           
+                                  </textarea>
+                                  <div class="d-flex justify-content-end mt-4">
+                                     <button class="btn btn__submit"><i class="far fa-comments pr-3"></i>post comment</button>
+                                   </div>
+                                </div>
+                              </form>
+                             
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-link p__big" style="color:#ed347d;" id="hide__reply"><i class="far fa-comments pr-3"></i>reply comment (1)</button>
+                              </div>
+                     </div>
+                     <div class="comment__box px-5">
+                        <div class="media">
+                            <img class="mr-3" src="img/avatar.svg" alt="avatar __svg">
+                            <div class="media-body">
+                              <h5 class="mt-0">Johnpaul Okeke 	<span class="ml-1"> made a comment on<small class="pl-2">14/12/19</small></span></h5>
+                              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                            </div>
+                          </div>
+                          <div class="d-flex justify-content-end">
+                              <button class="btn btn-link p__big" style="color:#ed347d;"><i class="far fa-comments pr-3"></i>reply comment</button>
+                            </div>
+                   </div>
+                  
+                    </div>
+                  </div>
+            </div>
+           
+         
+        </div>
+    </div>
+  
+
+
+
+
+
+
+
+
+  
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+   
+  
+    
+    <script>
+    $(document).ready(function(){
+      
+              
+	$('#spin').click(function(){
+    $('aside.menu-sidebar').toggleClass('toggleinout');
+        $('div.class').toggleClass('col-lg-9 offset-lg-3 col-md-9 offset-md-3 col-sm-9 offset-sm-3').toggleClass('col-lg-12 offset-lg-0 col-md-12 offset-md-0 col-sm-12 offset-sm-0');
+  });
+$ ('#replies').hide();
+  $('button#hide__reply').click(function(){
+    
+     
+      });
+});
+</script>
+   
+  
+  </body>
+</html> 
