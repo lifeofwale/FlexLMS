@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/datatable.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/floating-totop-button.min.css"> 
+    <link href='fullcalendar.css' rel='stylesheet' />
+    <link href='fullcalendar.print.min.css' rel='stylesheet' media='print' />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src='lib/moment.min.js'></script>
+    <script src='lib/jquery.min.js'></script>
+    <script src='fullcalendar.min.js'></script>
+    <style>
+    div.popover,.bs-popover-top{
+      width: 301px !important;
+      height: 250.7px;
+  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.08);
+  border: solid 1px #f0f0f0;
+  background-color: #ffffff;
+    }
+    h3.popover-header{
+      background-color: #0a9cb7;
+      padding:1.1rem 1.7rem;
+      color:#fff !important;
+    }
+    </style>
+    <script>
+
+      $(document).ready(function() {
+    
+        $('#calendar').fullCalendar({
+
+          
+          header: {
+            left: 'prev,next',
+            center: 'title',
+            right: 'month,basicWeek,basicDay'
+          },
+          eventClick: function (event, jsEvent, view) {
+
+$('.fc-event.popover-open').popover('hide');
+$('.popover').remove();
+
+var requestHtml = '';
+
+
+if (!event.requested && !event.ongoing) {
+    requestHtml = '<div style="border: 1px solid #c2c2c2; padding: 10px;margin:10px 0;width:100%">' +
+        '<h5 style= "float: none;">Request Training</h5>' +
+        '<textarea class="nofloat form-control" name= "comments" placeholder= "Comments" ></textarea>' +
+        '<button data-id="' + event.id + '" type="button" class="btnSmaller btnBlue nofloat saveTrainingRequest" style="margin-top: 10px;">Request Training</button></div>';
+}
+var periodHtml = '';
+if (event.period != null && event.period.length > 0) {
+    event.period.forEach(function (item) {
+        periodHtml = periodHtml + '<label class="label label-primary period-label">' + item.DayName + ': ' + item.StartTime + ' to ' + item.EndTime + '</label>';
+    });
+}
+
+$this = $(this);
+$this.addClass('popover-open');
+
+var isLive = event.isLive ? '<button onclick="gotoLiveSession(' + event.id + ')" class="btnBlue">Watch now</button>' : '';
+
+var popover = $this.popover({
+    html: true, container: 'body',
+    content: '<div style="width:100%;"><d style="font-size:11px;font-weight:600px;"> Description<br><p style="font-size: 14px;padding-top:3px;"> ' + event.desc + '</p ></p>' +
+      
+    '<p style="font-size: 11px;font-weight: 600;display:inline-block;margin-right:86px"> Vendor:<br> <strong> '
+     + event.vendor + 
+     '</strong ></p>' +
+    '<p style="font-size: 11px;font-weight: 600;display:inline-block;"> Category:<br> <strong> ' + String(event.category) + '</strong ></p> <br>' +
+    '<p style="font-size: 11px;font-weight: 600;display:inline-block;margin-right:86px"> Type: <br> <strong style=font-size: 16px;> ' + String(event.type) + '</strong ></p>' +
+    '<p style="display:inline-block;font-size: 11px;font-weight: 600;"> Location: <br><strong style=font-size: 16px;> ' + String(event.LocationPlace) + '</strong ></p><br>' +
+    '<p style="font-size: 11px;font-weight: 600;display:inline-block;margin-right:86px"> Start Date: <br><strong style=font-size: 16px;>' + event.startPeriod + '</strong ></p>' +
+    '<p style="font-size: 11px;font-weight: 600;display:inline-block;"> End Date: <br><strong style=font-size: 16px;>' + event.endPeriod + '</strong ></p>',
+    title: '<span style="padding-top:5px;display:inline-block">' + event.title + '</span>' +
+    '<button type="button" onclick="closepopover()" class="close" aria-hidden="true" style="">x</button>',
+    placement: 'auto'
+
+}).popover('show');
+$('#organizationcalendar').data('curEvent', event);
+return false;
+},
+          defaultDate: '2019-01-12',
+          navLinks: true, // can click day/week names to navigate views
+          editable: true,
+          eventLimit: true, // allow "more" link when too many events
+          events: [
+            {
+              title: 'All Day Event',
+              start: '2019-01-01'
+            },
+            // {
+            //   title: 'Long Event',
+            //   start: '2019-01-07',
+            //   end: '2019-01-10'
+            // },
+            // {
+            //   id: 999,
+            //   title: 'Repeating Event',
+            //   start: '2019-01-09T16:00:00'
+            // },
+            // {
+            //   id: 999,
+            //   title: 'Repeating Event',
+            //   start: '2019-01-16T16:00:00'
+            // },
+            // {
+            //   title: 'Conference',
+            //   start: '2019-01-11',
+            //   end: '2019-01-13'
+            // },
+            // {
+            //   title: 'Meeting',
+            //   start: '2019-01-12T10:30:00',
+            //   end: '2019-01-12T12:30:00'
+            // },
+            // {
+            //   title: 'Lunch',
+            //   start: '2019-01-12T12:00:00'
+            // },
+            // {
+            //   title: 'Meeting',
+            //   start: '2019-01-12T14:30:00'
+            // },
+            // {
+            //   title: 'Happy Hour',
+            //   start: '2019-01-12T17:30:00'
+            // },
+            // {
+            //   title: 'Dinner',
+            //   start: '2019-01-12T20:00:00'
+            // },
+            // {
+            //   title: 'Birthday Party',
+            //   start: '2019-01-13T07:00:00'
+            // },
+            // {
+            //   title: 'Click for Google',
+            //   url: 'http://google.com/',
+            //   start: '2019-01-28'
+            // }
+          ]
+        });
+        
+    
+      });
+    
+    </script>
+    
+    <title>LMS</title>
+  </head>
+  <body>
+  
+    <div class="container-fluid hero">
+        <div class="row">
+            <!-- aside content -->
+            <aside class="col-sm-2 position-fixed aside">
+                <div class="aside__logo">
+                    <img src="img/flex_logo.svg" alt="flex logo" class="aside__applogo">
+                    <img src="svg/flex__svg.svg" alt="flex svg" class="aside__applogo" style="display:none;width:60px;">
+                </div>
+                <ul class="nav flex-column aside__list">
+                      <li class="nav-item active aside__navitem mt-2">
+                          <a href="#" class="nav-link aside__navlink">
+                            
+<svg version="1.1"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+<style type="text/css">
+.st0{fill:none;}
+.st1{fill:none;stroke:#262626;}
+.st2{fill:#262626;}
+</style>
+<defs>
+</defs>
+<g id="Group_125_1_" transform="translate(-26 -184)">
+<g id="Rectangle_724_1_" transform="translate(26 184)">
+ <path class="st0" d="M15,0L15,0c8.3,0,15,6.7,15,15l0,0c0,8.3-6.7,15-15,15l0,0C6.7,30,0,23.3,0,15l0,0C0,6.7,6.7,0,15,0z"/>
+ <path class="st1" d="M15,0.5L15,0.5C23,0.5,29.5,7,29.5,15l0,0c0,8-6.5,14.5-14.5,14.5l0,0C7,29.5,0.5,23,0.5,15l0,0
+   C0.5,7,7,0.5,15,0.5z"/>
+</g>
+<path id="Path_856_1_" class="st2" d="M35,199.2h1.4v6.4h3.1v-3.1h3.1v3.1h3.1v-6.4H47l-6-6L35,199.2z"/>
+</g>
+</svg>
+
+                           <span class="aside__menuname"> Home</span>
+                          </a>
+                      </li>
+                      <li class="nav-item aside__navitem">
+                        <a href="#" class="nav-link aside__navlink">
+                          
+                           
+<svg version="1.1"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+<style type="text/css">
+.st0{fill:none;}
+.st1{fill:none;stroke:#262626;}
+.st2{fill:#262626;}
+</style>
+<defs>
+</defs>
+<g id="profile_1_" transform="translate(-706 -257)">
+<g id="Rectangle_724_1_" transform="translate(706 257)">
+ <path class="st0" d="M15,0L15,0c8.3,0,15,6.7,15,15l0,0c0,8.3-6.7,15-15,15l0,0C6.7,30,0,23.3,0,15l0,0C0,6.7,6.7,0,15,0z"/>
+ <path class="st1" d="M15,0.5L15,0.5C23,0.5,29.5,7,29.5,15l0,0c0,8-6.5,14.5-14.5,14.5l0,0C7,29.5,0.5,23,0.5,15l0,0
+   C0.5,7,7,0.5,15,0.5z"/>
+</g>
+<path id="ic_person_24px_1_" class="st2" d="M721,272c1.7,0,3-1.3,3-3s-1.3-3-3-3s-3,1.3-3,3S719.3,272,721,272z M721,273.5
+ c-2,0-6,1-6,3v1.5h12v-1.5C727,274.5,723,273.5,721,273.5z"/>
+</g>
+</svg>
+
+
+                        <span class="aside__menuname"> Profile</span>
+                        
+                        </a>
+                    </li>
+                    <li class="nav-item aside__navitem">
+                      <a href="#" class="nav-link aside__navlink">
+                       
+<svg version="1.1"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+<style type="text/css">
+.st0{fill:none;}
+.st1{fill:none;stroke:#262626;}
+</style>
+<defs>
+</defs>
+<g id="Control_1_" transform="translate(-744 -257)">
+<g id="Rectangle_724_1_" transform="translate(744 257)">
+ <path class="st0" d="M15,0L15,0c8.3,0,15,6.7,15,15l0,0c0,8.3-6.7,15-15,15l0,0C6.7,30,0,23.3,0,15l0,0C0,6.7,6.7,0,15,0z"/>
+ <path class="st1" d="M15,0.5L15,0.5C23,0.5,29.5,7,29.5,15l0,0c0,8-6.5,14.5-14.5,14.5l0,0C7,29.5,0.5,23,0.5,15l0,0
+   C0.5,7,7,0.5,15,0.5z"/>
+</g>
+<g id="noun_Course_Assign_1231267_1_" transform="translate(751 260.87)">
+ <path id="Path_857_1_" d="M3.5,13.7h0.8c0.3,0,0.5-0.3,0.5-0.5c0-0.3-0.2-0.5-0.5-0.5H3.5c-0.3,0-0.5,0.3-0.5,0.5
+   C3,13.5,3.2,13.7,3.5,13.7z"/>
+ <path id="Path_858_1_" d="M3.5,7.8h0.8c0.3,0,0.5-0.3,0.5-0.5c0-0.3-0.2-0.5-0.5-0.5H3.5C3.2,6.8,3,7,3,7.3C3,7.6,3.2,7.8,3.5,7.8
+   z"/>
+ <path id="Path_859_1_" d="M6.8,9.8h0.8c0.3,0,0.5-0.3,0.5-0.5c0-0.3-0.2-0.5-0.5-0.5H6.8C6.5,8.8,6.3,9,6.3,9.3
+   C6.3,9.6,6.5,9.8,6.8,9.8z"/>
+ <path id="Path_860_1_" d="M10.9,6.8H10C9.8,6.8,9.5,7,9.5,7.3c0,0.3,0.2,0.5,0.5,0.5c0,0,0,0,0,0h0.8c0.3,0,0.5-0.3,0.5-0.5
+   C11.4,7,11.1,6.8,10.9,6.8z"/>
+ <path id="Path_861_1_" d="M12.6,10.7V6.2c0-0.6-0.5-1.1-1.1-1.1H9.4c-0.6,0-1.1,0.5-1.1,1.1V7H6.1V6.2c0-0.6-0.5-1.1-1.1-1.1
+   c0,0,0,0,0,0H3c-0.6,0-1.1,0.5-1.1,1.1l0,0v8.2c0,0.6,0.5,1.1,1.1,1.1h5.6c0.9,1.6,2.9,2.1,4.5,1.2c1.6-0.9,2.1-2.9,1.2-4.5
+   C13.9,11.5,13.3,11,12.6,10.7L12.6,10.7z M5.1,14.4H3V6.2h2.1V14.4z M8.3,12.7c0,0.1-0.1,0.3-0.1,0.4c0-0.3-0.3-0.5-0.5-0.5H6.8
+   c-0.3,0-0.5,0.2-0.5,0.5c0,0.3,0.2,0.5,0.5,0.5h0.9c0.2,0,0.4-0.1,0.5-0.3c0,0.3,0,0.7,0,1h-2V8.1h2.2V12.7z M9.4,6.2h2.1v4.3
+   h-0.1c-0.7,0-1.5,0.3-2.1,0.7V6.2z M11.4,16.1c-1.2,0-2.2-1-2.2-2.2c0-1.2,1-2.2,2.2-2.2c1.2,0,2.2,1,2.2,2.2S12.7,16.1,11.4,16.1
+   C11.4,16.1,11.4,16.1,11.4,16.1z"/>
+ <path id="Path_862_1_" d="M12.4,12.8L11.2,14l-0.5-0.5c-0.2-0.2-0.5-0.2-0.7,0s-0.2,0.5,0,0.7c0,0,0,0,0,0l0.9,0.9
+   c0.2,0.2,0.5,0.2,0.7,0l1.6-1.6c0.2-0.2,0.2-0.5,0-0.7C12.9,12.6,12.6,12.6,12.4,12.8L12.4,12.8z"/>
+</g>
+</g>
+</svg>
+
+                       <span class="aside__menuname"> Course catalog</span>
+                      </a>
+                  </li>
+                  <li class="nav-item aside__navitem">
+                    <a href="#" class="nav-link aside__navlink">
+                    
+<svg version="1.1"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+<style type="text/css">
+.st0{fill:none;}
+.st1{fill:none;stroke:#262626;}
+</style>
+<defs>
+</defs>
+<g id="branch_1_" transform="translate(-781 -257)">
+<g id="Rectangle_724_1_" transform="translate(781 257)">
+ <path class="st0" d="M15,0L15,0c8.3,0,15,6.7,15,15l0,0c0,8.3-6.7,15-15,15l0,0C6.7,30,0,23.3,0,15l0,0C0,6.7,6.7,0,15,0z"/>
+ <path class="st1" d="M15,0.5L15,0.5C23,0.5,29.5,7,29.5,15l0,0c0,8-6.5,14.5-14.5,14.5l0,0C7,29.5,0.5,23,0.5,15l0,0
+   C0.5,7,7,0.5,15,0.5z"/>
+</g>
+<g id="noun_examination_967955_1_" transform="translate(791.502 269.762)">
+ <g id="Group_98_1_" transform="translate(0 -4.506)">
+   <ellipse id="Ellipse_38_1_" cx="4.9" cy="1.8" rx="1.5" ry="1.5"/>
+   <path id="Path_863_1_" d="M5.9,9.5l0.7,3c0.1,0.5,0.5,0.7,1,0.6s0.7-0.5,0.6-1c0,0,0,0,0,0L7.4,8.5C7.3,8.1,6.9,7.8,6.5,7.8h-1
+     L4.2,9.5H5.9z"/>
+   <path id="Path_864_1_" d="M4.7,7.8H4c0-0.5,0.1-1,0.1-1.5C3.8,6.2,3.6,6,3.3,5.7C3.1,5.4,2.9,5,2.8,4.7v0C2.8,4.3,3,3.9,3.4,3.9
+     c0,0,0.1,0,0.1,0c0.3,0,0.6,0.2,0.7,0.6v0c0,0,0,0,0,0c0,0.1,0.1,0.1,0.1,0.2c0,0.1,0.1,0.2,0.2,0.3c0.1-0.6-0.1-1.4-0.7-1.5
+     C3,3.3,2.2,3.8,2,4.6C1.6,5.8,1.5,7.1,1.7,8.3C1.7,9,2.3,9.5,3,9.5c0.1,0,0.1,0,0.2,0h0.2L4.7,7.8z"/>
+   <path id="Path_865_1_" d="M8.7,6.7H5.1c-0.2,0-0.3,0.1-0.3,0.3c0,0.2,0.1,0.3,0.3,0.3c0,0,0,0,0,0h0.1L3.2,9.9H1.8
+     c-0.1,0-0.1,0-0.2,0c0,0-0.1-0.1-0.1-0.1c0,0,0,0,0-0.1v0l0,0v0L0.7,5.3C0.6,5.1,0.5,5,0.3,5S0,5.2,0,5.4c0,0,0,0,0,0l0.8,4.3
+     c0,0.1,0.1,0.3,0.2,0.4c0.1,0.1,0.2,0.2,0.3,0.3c0.1,0.1,0.3,0.1,0.4,0.1l-1.1,2.6c0,0.1,0,0.2,0.1,0.3c0.1,0,0.2,0,0.3-0.1
+     l1.2-2.8h2.1l1.2,2.8c0,0.1,0.2,0.2,0.3,0.1c0.1,0,0.2-0.2,0.1-0.3l-1.1-2.6h0.6c0.2,0,0.3-0.2,0.3-0.3c0-0.2-0.2-0.3-0.3-0.3
+     H3.7l1.9-2.5h3C8.9,7.4,9,7.2,9,7.1C9,6.9,8.9,6.7,8.7,6.7L8.7,6.7z"/>
+   <path id="Path_866_1_" d="M6.7,4.9L6.5,5l0.2,0.2c0.1,0,0.2,0,0.3-0.1L6.7,4.9z"/>
+   <path id="Path_867_1_" d="M7.9,6.6L7.9,6.6L7.8,6.2L7.6,6.4L7.9,6.6L7.9,6.6L7.9,6.6z"/>
+   <path id="Path_868_1_" d="M5.7,6.6c0.6,0,1.1-0.1,1.6-0.3c0.3-0.1,0.4-0.4,0.4-0.7C7.6,5.4,7.3,5.2,7,5.3
+     C6.6,5.4,6.1,5.5,5.7,5.5C5.4,5.5,5,5.5,4.8,5.3C4.5,5.2,4.3,5,4.2,4.8c0-0.1-0.1-0.2-0.1-0.2c0,0,0-0.1,0-0.1v0l0,0
+     C4,4.2,3.7,4,3.4,4C3.1,4.1,2.9,4.3,3,4.6c0.1,0.4,0.2,0.7,0.5,1C3.7,5.9,4,6.1,4.3,6.3C4.7,6.5,5.2,6.6,5.7,6.6L5.7,6.6z"/>
+ </g>
+</g>
+</g>
+</svg>
+
+                    <span class="aside__menuname">Exams</span>
+                    </a>
+                </li>
+                <li class="nav-item aside__navitem">
+                  <a href="#" class="nav-link aside__navlink">
+                   
+<svg version="1.1"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+<style type="text/css">
+.st0{fill:none;}
+.st1{fill:none;stroke:#262626;}
+</style>
+<defs>
+</defs>
+<g id="Vendors_1_" transform="translate(-818 -257)">
+<g id="Rectangle_724_1_" transform="translate(818 257)">
+ <path class="st0" d="M15,0L15,0c8.3,0,15,6.7,15,15l0,0c0,8.3-6.7,15-15,15l0,0C6.7,30,0,23.3,0,15l0,0C0,6.7,6.7,0,15,0z"/>
+ <path class="st1" d="M15,0.5L15,0.5C23,0.5,29.5,7,29.5,15l0,0c0,8-6.5,14.5-14.5,14.5l0,0C7,29.5,0.5,23,0.5,15l0,0
+   C0.5,7,7,0.5,15,0.5z"/>
+</g>
+<g id="noun_education_199810_1_" transform="translate(813 236.3)">
+ <g id="Group_102_1_" transform="translate(13.1 30.7)">
+   <g id="Group_101_1_" transform="translate(0 0)">
+     <g id="Group_100_1_">
+       <path id="Path_869_1_" d="M6.5,9.9c0,0.1-0.1,0.3-0.2,0.3L1.9,9.3h0C1.7,9.3,1.6,9.2,1.6,9V0.3C1.6,0.1,1.7,0,1.8,0l4.4,0.8h0
+         c0.2,0,0.3,0.1,0.3,0.3V9.9z"/>
+       <path id="Path_870_1_" d="M12.2,9c0,0.2-0.1,0.3-0.3,0.3c0,0,0,0,0,0h0l-4.4,0.8c-0.1,0-0.2-0.1-0.2-0.3V1.1
+         c0-0.2,0.1-0.3,0.3-0.3c0,0,0,0,0,0h0l1.9-0.4v2.9c0,0.1,0.1,0.1,0.1,0.1c0,0,0,0,0.1,0l0.8-0.8l0.7,0.8c0,0,0,0,0,0l0,0
+         c0,0,0.1,0,0.1,0l0,0c0,0,0.1-0.1,0.1-0.1V0.1L11.9,0c0.1,0,0.2,0.1,0.2,0.3L12.2,9L12.2,9z"/>
+       <path id="Path_871_1_" d="M13.7,2.9v7c0,0.3-0.3,0.6-0.6,0.6H9.4l2.6-0.4c0.5,0,0.9-0.4,0.9-0.9V2.3h0.3
+         C13.4,2.3,13.7,2.6,13.7,2.9z"/>
+       <path id="Path_872_1_" d="M4.4,10.5H0.6C0.3,10.5,0,10.2,0,9.9v-7c0-0.3,0.3-0.6,0.6-0.6h0.3v6.8c0,0.5,0.4,0.9,0.9,0.9
+         L4.4,10.5z"/>
+     </g>
+   </g>
+ </g>
+</g>
+</g>
+</svg>
+
+                    <span class="aside__menuname">Learning history</span>
+                  </a>
+              </li>
+              <li class="nav-item aside__navitem">
+                <a href="#" class="nav-link aside__navlink">
+                
+<svg version="1.1"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+<style type="text/css">
+.st0{fill:none;}
+.st1{fill:none;stroke:#262626;}
+</style>
+<defs>
+</defs>
+<g id="Report_1_" transform="translate(-893 -257)">
+<g id="Rectangle_724_1_" transform="translate(893 257)">
+ <path class="st0" d="M15,0L15,0c8.3,0,15,6.7,15,15l0,0c0,8.3-6.7,15-15,15l0,0C6.7,30,0,23.3,0,15l0,0C0,6.7,6.7,0,15,0z"/>
+ <path class="st1" d="M15,0.5L15,0.5C23,0.5,29.5,7,29.5,15l0,0c0,8-6.5,14.5-14.5,14.5l0,0C7,29.5,0.5,23,0.5,15l0,0
+   C0.5,7,7,0.5,15,0.5z"/>
+</g>
+<g id="noun_client_survey_2122610_1_" transform="translate(901 265)">
+ <g id="Group_104_1_" transform="translate(1 1)">
+   <path id="Path_874_1_" d="M1.8,0C0.8,0,0,0.8,0,1.8c0,1,0.8,1.8,1.8,1.8c1,0,1.8-0.8,1.8-1.8C3.6,0.8,2.8,0,1.8,0z M1.8,3.3
+     C1,3.3,0.4,2.6,0.4,1.8S1,0.4,1.8,0.4S3.3,1,3.3,1.8l0,0C3.3,2.6,2.6,3.3,1.8,3.3z"/>
+   <path id="Path_875_1_" d="M2.6,1.1H2.2C2.1,1.1,2,1.2,2,1.3c0,0.1,0.1,0.2,0.2,0.2c0,0,0,0,0,0h0.3c0.1,0,0.2-0.1,0.2-0.2
+     C2.8,1.2,2.7,1.1,2.6,1.1C2.6,1.1,2.6,1.1,2.6,1.1L2.6,1.1z"/>
+   <path id="Path_876_1_" d="M1.6,1.3c0-0.1-0.1-0.2-0.2-0.2H1.1C1,1.1,0.9,1.2,0.9,1.3v0c0,0.1,0.1,0.2,0.2,0.2c0,0,0,0,0,0h0.3
+     C1.5,1.5,1.6,1.4,1.6,1.3C1.6,1.3,1.6,1.3,1.6,1.3z"/>
+   <path id="Path_877_1_" d="M1.8,4.2C0.8,4.2,0,5,0,6s0.8,1.8,1.8,1.8S3.6,7,3.6,6C3.6,5,2.8,4.2,1.8,4.2C1.8,4.2,1.8,4.2,1.8,4.2z
+      M1.8,7.5C1,7.5,0.4,6.8,0.4,6c0-0.8,0.7-1.5,1.5-1.5S3.3,5.2,3.3,6l0,0C3.3,6.8,2.6,7.5,1.8,7.5z"/>
+   <path id="Path_878_1_" d="M2.6,5.3H2.2C2.1,5.3,2,5.4,2,5.5c0,0.1,0.1,0.2,0.2,0.2c0,0,0,0,0,0h0.3c0.1,0,0.2-0.1,0.2-0.2
+     S2.7,5.3,2.6,5.3C2.6,5.3,2.6,5.3,2.6,5.3L2.6,5.3z"/>
+   <path id="Path_879_1_" d="M1.6,5.5c0-0.1-0.1-0.2-0.2-0.2H1.1C1,5.3,0.9,5.4,0.9,5.5c0,0.1,0.1,0.2,0.2,0.2c0,0,0,0,0,0h0.3
+     C1.5,5.7,1.6,5.6,1.6,5.5C1.6,5.5,1.6,5.5,1.6,5.5z"/>
+   <path id="Path_880_1_" d="M2.3,6.3h-1c-0.1,0-0.2,0.1-0.2,0.2s0.1,0.2,0.2,0.2c0,0,0,0,0,0h1c0.1,0,0.2-0.1,0.2-0.2
+     C2.5,6.4,2.4,6.3,2.3,6.3z"/>
+   <path id="Path_881_1_" d="M1.8,8.4c-1,0-1.8,0.8-1.8,1.8S0.8,12,1.8,12s1.8-0.8,1.8-1.8C3.6,9.2,2.8,8.4,1.8,8.4
+     C1.8,8.4,1.8,8.4,1.8,8.4z M1.8,11.6c-0.8,0-1.5-0.7-1.5-1.5c0-0.8,0.7-1.5,1.5-1.5s1.5,0.7,1.5,1.5C3.3,11,2.6,11.6,1.8,11.6z"
+     />
+   <path id="Path_882_1_" d="M2.6,9.5H2.2C2.1,9.5,2,9.6,2,9.7c0,0.1,0.1,0.2,0.2,0.2c0,0,0,0,0,0h0.3c0.1,0,0.2-0.1,0.2-0.2
+     S2.7,9.5,2.6,9.5C2.6,9.5,2.6,9.5,2.6,9.5L2.6,9.5z"/>
+   <path id="Path_883_1_" d="M1.6,9.7c0-0.1-0.1-0.2-0.2-0.2H1.1C1,9.5,0.9,9.6,0.9,9.7c0,0.1,0.1,0.2,0.2,0.2c0,0,0,0,0,0h0.3
+     C1.5,9.9,1.6,9.8,1.6,9.7C1.6,9.7,1.6,9.7,1.6,9.7z"/>
+   <path id="Path_884_1_" d="M1.2,10.8c-0.1,0.1-0.1,0.2-0.1,0.3s0.2,0.1,0.3,0.1c0,0,0,0,0,0c0.2-0.2,0.6-0.2,0.8,0
+     c0,0,0.1,0,0.1,0c0.1,0,0.1,0,0.1-0.1c0.1-0.1,0-0.2,0-0.3C2.1,10.4,1.6,10.4,1.2,10.8z"/>
+   <path id="Path_885_1_" d="M2.2,2.2C2,2.4,1.6,2.4,1.4,2.2c-0.1-0.1-0.2,0-0.3,0.1c-0.1,0.1,0,0.2,0,0.2c0.2,0.1,0.4,0.2,0.6,0.2
+     c0.2,0,0.5-0.1,0.6-0.2c0.1-0.1,0.1-0.2,0-0.3C2.4,2.2,2.3,2.1,2.2,2.2z"/>
+   <path id="Path_886_1_" d="M4.6,2.5H10c0.1,0,0.2-0.1,0.2-0.2c0-0.1-0.1-0.2-0.2-0.2H4.6c-0.1,0-0.2,0.1-0.2,0.2
+     C4.4,2.4,4.4,2.5,4.6,2.5C4.5,2.5,4.6,2.5,4.6,2.5z"/>
+   <path id="Path_887_1_" d="M11.8,1.2H4.6c-0.1,0-0.2,0.1-0.2,0.2c0,0.1,0.1,0.2,0.2,0.2c0,0,0,0,0,0h7.3c0.1,0,0.2-0.1,0.2-0.2
+     C12,1.3,11.9,1.2,11.8,1.2C11.8,1.2,11.8,1.2,11.8,1.2z"/>
+   <path id="Path_888_1_" d="M4.6,6.6H10c0.1,0,0.2-0.1,0.2-0.2c0-0.1-0.1-0.2-0.2-0.2c0,0,0,0,0,0H4.6c-0.1,0-0.2,0.1-0.2,0.2
+     C4.4,6.5,4.4,6.6,4.6,6.6C4.5,6.6,4.6,6.6,4.6,6.6z"/>
+   <path id="Path_889_1_" d="M11.8,5.4H4.6c-0.1,0-0.2,0.1-0.2,0.2c0,0.1,0.1,0.2,0.2,0.2h7.3c0.1,0,0.2-0.1,0.2-0.2
+     C12,5.5,11.9,5.4,11.8,5.4C11.8,5.4,11.8,5.4,11.8,5.4z"/>
+   <path id="Path_890_1_" d="M10,10.5H4.6c-0.1,0-0.2,0.1-0.2,0.2c0,0.1,0.1,0.2,0.2,0.2c0,0,0,0,0,0H10c0.1,0,0.2-0.1,0.2-0.2
+     C10.2,10.5,10.1,10.5,10,10.5z"/>
+   <path id="Path_891_1_" d="M11.8,9.5H4.6c-0.1,0-0.2,0.1-0.2,0.2c0,0.1,0.1,0.2,0.2,0.2c0,0,0,0,0,0h7.3c0.1,0,0.2-0.1,0.2-0.2
+     C12,9.6,11.9,9.6,11.8,9.5C11.8,9.5,11.8,9.5,11.8,9.5z"/>
+ </g>
+</g>
+</g>
+</svg>
+
+                  <span class="aside__menuname">Surveys</span>
+                </a>
+            </li>
+            <li class="nav-item aside__navitem">
+              <a href="#" class="nav-link aside__navlink">
+                
+<svg version="1.1"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+<style type="text/css">
+.st0{fill:none;}
+.st1{fill:none;stroke:#262626;}
+</style>
+<defs>
+</defs>
+<g id="Incidence_Management_1_" transform="translate(-967 -257)">
+<g id="Rectangle_724_1_" transform="translate(967 257)">
+ <path class="st0" d="M15,0L15,0c8.3,0,15,6.7,15,15l0,0c0,8.3-6.7,15-15,15l0,0C6.7,30,0,23.3,0,15l0,0C0,6.7,6.7,0,15,0z"/>
+ <path class="st1" d="M15,0.5L15,0.5C23,0.5,29.5,7,29.5,15l0,0c0,8-6.5,14.5-14.5,14.5l0,0C7,29.5,0.5,23,0.5,15l0,0
+   C0.5,7,7,0.5,15,0.5z"/>
+</g>
+<g id="noun_Certificate_426773_1_" transform="translate(960 263.397)">
+ <path id="Path_873_1_" d="M22.4,4.8c-1.1,0-1.9,0.9-1.9,1.9s0.9,1.9,1.9,1.9s1.9-0.9,1.9-1.9C24.3,5.7,23.4,4.8,22.4,4.8z
+    M22.5,7.2l-0.4,0.4l-0.4-0.4l-0.4-0.4l0.4-0.4l0.4,0.4l1-1l0.4,0.4L22.5,7.2z M26.2,6.2C26,6,26,5.8,26.1,5.6l0.1-0.2
+   c0.1-0.3,0-0.6-0.3-0.7c0,0,0,0-0.1,0l-0.2-0.1c-0.2-0.1-0.4-0.3-0.4-0.5V3.8c0-0.3-0.3-0.5-0.6-0.5c0,0,0,0-0.1,0l-0.2,0
+   c-0.2,0-0.5-0.1-0.6-0.3l-0.1-0.2c-0.1-0.3-0.5-0.4-0.7-0.2c0,0,0,0-0.1,0l-0.2,0.1c-0.2,0.1-0.4,0.1-0.6,0l-0.2-0.1
+   c-0.2-0.2-0.6-0.1-0.8,0.1c0,0,0,0,0,0.1L21,3.1c-0.1,0.2-0.3,0.3-0.6,0.3l-0.2,0c-0.3,0-0.6,0.2-0.6,0.5c0,0,0,0,0,0.1l0,0.2
+   c0,0.2-0.2,0.4-0.4,0.5l-0.2,0.1c-0.3,0.1-0.5,0.4-0.4,0.7c0,0,0,0,0,0.1l0.1,0.2c0.1,0.2,0,0.5-0.1,0.6l-0.2,0.1
+   c-0.2,0.2-0.3,0.5-0.1,0.8c0,0,0,0,0.1,0.1l0.2,0.1c0.2,0.2,0.2,0.4,0.1,0.6l-0.1,0.2c-0.1,0.3,0,0.6,0.3,0.7c0,0,0,0,0.1,0
+   l0.2,0.1c0.2,0.1,0.4,0.3,0.4,0.5l0,0.2c0,0.3,0.3,0.5,0.6,0.5c0,0,0,0,0.1,0l0.2,0c0.2,0,0.5,0.1,0.6,0.3l0.1,0.2
+   c0.1,0.3,0.5,0.4,0.7,0.2c0,0,0,0,0.1,0l0.2-0.1c0.2-0.1,0.4-0.1,0.6,0l0.2,0.1c0.2,0.2,0.6,0.1,0.8-0.1c0,0,0,0,0-0.1l0.1-0.2
+   c0.1-0.2,0.3-0.3,0.6-0.3l0.2,0c0.3,0,0.6-0.2,0.6-0.5c0,0,0,0,0-0.1l0-0.2c0-0.2,0.2-0.4,0.4-0.5l0.2-0.1
+   c0.3-0.1,0.5-0.4,0.4-0.7c0,0,0,0,0-0.1l-0.1-0.2c-0.1-0.2,0-0.5,0.1-0.6l0.2-0.1c0.2-0.2,0.3-0.5,0.1-0.8c0,0,0,0-0.1-0.1
+   L26.2,6.2z M22.4,9.4c-1.5,0-2.7-1.2-2.7-2.7s1.2-2.7,2.7-2.7S25,5.3,25,6.7v0C25,8.2,23.8,9.4,22.4,9.4z M18.2,14l1.3-3.2
+   c0.2,0.1,0.4,0.1,0.6,0.1c0.1,0,0.2,0,0.2,0h0l0,0c0.2,0.4,0.7,0.7,1.2,0.7c0.1,0,0.3,0,0.4-0.1L20.6,15c0,0.1-0.1,0.1-0.2,0.1
+   c0,0-0.1,0-0.1-0.1l-0.6-1.1c0,0-0.1-0.1-0.1,0l-1.2,0.4c-0.1,0-0.1,0-0.2-0.1C18.2,14.1,18.2,14.1,18.2,14z M24.1,15l-1.4-3.4
+   c0.1,0,0.3,0.1,0.4,0.1c0.5,0,0.9-0.3,1.2-0.7l0,0h0c0.1,0,0.2,0,0.2,0c0.2,0,0.4,0,0.6-0.1l1.3,3.3c0,0.1,0,0.1-0.1,0.2
+   c0,0-0.1,0-0.1,0l-1.2-0.4c0,0-0.1,0-0.1,0L24.4,15C24.3,15.1,24.2,15.1,24.1,15C24.2,15,24.2,15,24.1,15z"/>
+</g>
+</g>
+</svg>
+
+                <span class="aside__menuname">Certificates</span>
+              </a>
+          </li>
+          <li class="nav-item aside__navitem">
+            <a href="#" class="nav-link aside__navlink">
+              <!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In  -->
+<svg version="1.1"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+<style type="text/css">
+.st0{fill:none;}
+.st1{fill:none;stroke:#262626;}
+</style>
+<defs>
+</defs>
+<g id="Performance_Dashboard_1_" transform="translate(-856 -257)">
+<g id="Rectangle_724_1_" transform="translate(856 257)">
+ <path class="st0" d="M15,0L15,0c8.3,0,15,6.7,15,15l0,0c0,8.3-6.7,15-15,15l0,0C6.7,30,0,23.3,0,15l0,0C0,6.7,6.7,0,15,0z"/>
+ <path class="st1" d="M15,0.5L15,0.5C23,0.5,29.5,7,29.5,15l0,0c0,8-6.5,14.5-14.5,14.5l0,0C7,29.5,0.5,23,0.5,15l0,0
+   C0.5,7,7,0.5,15,0.5z"/>
+</g>
+<g id="noun_service_center_2111707_1_" transform="translate(859 260)">
+ <g id="Group_107_1_" transform="translate(6 6)">
+   <g id="Group_106_1_">
+     <path id="Path_901_1_" d="M1.3,9.3h1c0.2,0,0.3-0.2,0.3-0.3V5.3C2.7,5.2,2.5,5,2.3,5H2V4.7c0-2.2,1.8-4,4-4c2.2,0,4,1.8,4,4
+       c0,0,0,0,0,0V5H9.7C9.5,5,9.3,5.2,9.3,5.3V9c0,0.2,0.2,0.3,0.3,0.3H10c-0.2,1-1,1.7-2,1.7H7.3c-0.1-0.4-0.4-0.7-0.8-0.7h-1
+       c-0.5,0-0.8,0.4-0.8,0.8S5,12,5.5,12h1c0.3,0,0.5-0.1,0.7-0.3H8c1.3,0,2.5-1,2.6-2.3h0C11.4,9.3,12,8.7,12,8V6.3
+       C12,5.6,11.4,5,10.7,5V4.7c0-2.6-2.2-4.6-4.7-4.6c-2.5,0-4.6,2.1-4.6,4.6V5C0.6,5,0,5.6,0,6.3V8C0,8.7,0.6,9.3,1.3,9.3z"/>
+     <path id="Path_902_1_" d="M6,9.7c0.6,0,1.2-0.3,1.6-0.8c0.1-0.1,0.1-0.4-0.1-0.5C7.4,8.3,7.2,8.3,7.1,8.5
+       C6.6,9.1,5.8,9.2,5.2,8.7C5.1,8.7,5,8.6,4.9,8.5C4.8,8.3,4.6,8.3,4.5,8.4C4.3,8.5,4.3,8.7,4.4,8.9C4.8,9.4,5.4,9.7,6,9.7z"/>
+   </g>
+ </g>
+</g>
+</g>
+</svg>
+
+             <span class="aside__menuname"> Supports</span>
+            </a>
+        </li>
+        <li class="nav-item aside__navitem">
+          <a href="#" class="nav-link aside__navlink">
+            <!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In  -->
+<svg version="1.1"
+xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30" style="enable-background:new 0 0 30 30;" xml:space="preserve">
+<style type="text/css">
+.st0{fill:none;}
+.st1{fill:none;stroke:#262626;}
+</style>
+<defs>
+</defs>
+<g id="config_1_" transform="translate(-930 -257)">
+<g id="Rectangle_724_1_" transform="translate(930 257)">
+ <path class="st0" d="M15,0L15,0c8.3,0,15,6.7,15,15l0,0c0,8.3-6.7,15-15,15l0,0C6.7,30,0,23.3,0,15l0,0C0,6.7,6.7,0,15,0z"/>
+ <path class="st1" d="M15,0.5L15,0.5C23,0.5,29.5,7,29.5,15l0,0c0,8-6.5,14.5-14.5,14.5l0,0C7,29.5,0.5,23,0.5,15l0,0
+   C0.5,7,7,0.5,15,0.5z"/>
+</g>
+<g id="noun_Calendar_2080654_1_" transform="translate(936 262.6)">
+ <g id="Group_105_1_" transform="translate(2.428 3.4)">
+   <path id="Path_892_1_" d="M10.8,0.8h-0.6l-0.2,0.6C10,1.9,9.5,2.3,8.9,2.3C8.6,2.3,8.4,2.2,8.2,2C8,1.7,8,1.4,8.1,1.1l0.1-0.3
+     H6.4L6.2,1.4C6.1,1.9,5.6,2.3,5,2.3C4.8,2.3,4.5,2.2,4.3,2C4.1,1.7,4.1,1.4,4.2,1.1l0.1-0.3H3.7c-0.9,0-1.7,0.7-2,1.6l-1.6,6
+     C-0.1,8.8,0,9.3,0.3,9.7C0.6,10,1,10.2,1.4,10.2h0.8v0.4c0,0.9,0.8,1.7,1.7,1.7c0,0,0,0,0,0h6.9c0.9,0,1.7-0.8,1.7-1.7l0,0V2.5
+     C12.5,1.6,11.7,0.8,10.8,0.8C10.8,0.8,10.8,0.8,10.8,0.8z M1.4,9.2c-0.1,0-0.2,0-0.3-0.1C1,8.9,1,8.8,1.1,8.7l1.3-5h8.2L9.3,8.4
+     c-0.1,0.4-0.5,0.8-1,0.8L1.4,9.2L1.4,9.2z M11.5,10.6c0,0.4-0.3,0.7-0.7,0.7H3.9c-0.4,0-0.7-0.3-0.7-0.7v-0.4h5.1
+     c0.9,0,1.7-0.7,2-1.6l1.2-4.4L11.5,10.6z"/>
+   <path id="Path_893_1_" d="M5,1.8c0.3,0,0.6-0.2,0.7-0.6l0.2-0.7C6,0.3,5.9,0.1,5.7,0C5.6,0,5.6,0,5.5,0C5.2,0,4.9,0.2,4.8,0.6
+     L4.6,1.3c-0.1,0.2,0,0.5,0.3,0.5C4.9,1.8,5,1.8,5,1.8z"/>
+   <path id="Path_894_1_" d="M8.9,1.8c0.3,0,0.6-0.2,0.7-0.6l0.2-0.7c0.1-0.2,0-0.5-0.2-0.5C9.5,0,9.5,0,9.4,0
+     C9.1,0,8.8,0.2,8.7,0.6L8.5,1.3c-0.1,0.2,0,0.5,0.3,0.5C8.8,1.8,8.9,1.8,8.9,1.8z"/>
+   <path id="Path_895_1_" d="M6.3,6.7H5.1C5,6.7,4.9,6.8,4.9,6.9L4.6,7.8c0,0.1,0,0.1,0.1,0.1c0,0,0,0,0,0H6c0.1,0,0.2-0.1,0.2-0.1
+     l0.2-0.9C6.4,6.8,6.4,6.8,6.3,6.7C6.3,6.7,6.3,6.7,6.3,6.7z"/>
+   <path id="Path_896_1_" d="M4.1,6.7H2.9c-0.1,0-0.2,0.1-0.2,0.1L2.5,7.8c0,0.1,0,0.1,0.1,0.1c0,0,0,0,0,0h1.2C3.9,7.9,4,7.8,4,7.8
+     l0.2-0.9C4.3,6.8,4.2,6.8,4.1,6.7C4.2,6.7,4.1,6.7,4.1,6.7z"/>
+   <path id="Path_897_1_" d="M8.4,6.7H7.2C7.1,6.7,7.1,6.8,7,6.9L6.8,7.8c0,0.1,0,0.1,0.1,0.1c0,0,0,0,0,0h1.2
+     c0.1,0,0.2-0.1,0.2-0.1l0.2-0.9C8.6,6.8,8.5,6.8,8.4,6.7C8.5,6.7,8.5,6.7,8.4,6.7z"/>
+   <path id="Path_898_1_" d="M6.8,4.8H5.6C5.5,4.8,5.4,4.9,5.4,5L5.1,5.9c0,0.1,0,0.1,0.1,0.1c0,0,0,0,0,0h1.2C6.5,6,6.6,6,6.7,5.9
+     L6.9,5C6.9,4.9,6.9,4.9,6.8,4.8C6.8,4.8,6.8,4.8,6.8,4.8z"/>
+   <path id="Path_899_1_" d="M4.6,4.8H3.4C3.3,4.8,3.2,4.9,3.2,5L3,5.9C3,5.9,3,6,3,6c0,0,0,0,0,0h1.2C4.4,6,4.5,6,4.5,5.9L4.7,5
+     C4.8,4.9,4.7,4.9,4.6,4.8C4.7,4.8,4.7,4.8,4.6,4.8z"/>
+   <path id="Path_900_1_" d="M7.4,6h1.2C8.7,6,8.8,6,8.8,5.9L9.1,5c0-0.1,0-0.1-0.1-0.1c0,0,0,0-0.1,0H7.7C7.6,4.9,7.6,4.9,7.5,5
+     L7.3,5.9C7.3,5.9,7.3,6,7.4,6C7.4,6,7.4,6,7.4,6z"/>
+ </g>
+</g>
+</g>
+</svg>
+
+            <span class="aside__menuname">Training calendar</span>
+          </a>
+      </li>
+                </ul>
+            </aside>
+            <!-- main content -->
+            <main class="col-sm-10 offset-sm-2 main">
+              <header class="main__header container-fluid d-flex align-items-center w-100">
+                <ul class="nav flex-row mr-auto">
+                 <li class="nav-item">
+                    <a href="#" id="aside__toggle" class="aside__togglebar nav-link px-0"><i class="fas fa-bars" style="font-size:18px;"></i></a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" id="aside__toggle2" class="aside__togglebar nav-link px-0 d-none"><i class="fas fa-bars" style="font-size:18px;"></i></a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" class="nav-link aside__togglebar d-none d-sm-block" id="search_form"><i class="fas fa-search"></i></a>
+                  </li>
+                 
+                  <li class="nav-item d-flex">
+                    <input type="seacrh" class="form-control main__header--inputsearch align-self-center d-none d-sm-block" id="search__reveal" placeholder="Search courses...">
+                  </li>
+
+                 
+                </ul>
+                <ul class="nav flex-row ml-auto align-items-center">
+                    <li class="nav-item dropdown align-self-center">
+                      <a href="#" class="nav-link header__notify" id="header__notification" aria-expanded="false" data-toggle="dropdown" aria-haspopup="true">
+                          <i class="fas fa-bell"></i>
+                          <span class="count">7</span>
+                      </a>
+                      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="header__notification">
+                          <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">Another action</a>
+                          <a class="dropdown-item" href="#">Something else here</a>
+                      </div>
+                    </li>
+                    <li class="nav-item dropdown align-self-center">
+                        <a href="#" class="nav-link header__user dropdown-toggle" id="header__userset" aria-expanded="false" data-toggle="dropdown" aria-haspopup="true">
+                          <img src="svg/user__icon.svg" class="d-inline-block" alt="User__icon">
+                           <span>Aderonke Ebun</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right header__usernav" aria-labelledby="header__userset">
+                            <p class="text-center">Aderonke Ebun</p>
+                            <p class="text-center"><small>adminstrator@flexlms.ng</small></p>
+                            <div class="dropdown-divider"></div>  
+                            <a class="dropdown-item" href="#"> <span class="mr-3 align-middle"><img src="img/profile_drop.svg" alt="profile_icon"></span> Profile</a>
+                            <a class="dropdown-item" href="#"><span class="mr-3"><img src="img/job__drop.svg" alt="job_icon"></span> Admin area</a>
+                            <div class="dropdown-divider"></div>  
+                            <a class="dropdown-item" href="#"><span class="mr-3"><img src="img/lock__drop.svg" alt="lock_icon"></span> Logout</a>
+                        </div>
+                      </li>
+                  </ul>
+              </header>
+              <section class="section">
+                <div class="jumbotron jumbotron-fluid section__banner-calender mb-0">
+                  <div class="container section__banner--deet">
+                    <h1 class="section__banner--primary">Training calendar</h1>
+                    <p class="section__banner--sec">Stay up-to-date with live trainings and classes.</p>
+                  </div>
+                </div>
+              </section>
+              <section class="coursedeets container-fluid" style="position:relative;">
+                   
+                            <ul class="nav nav-pills switch__column" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                      <a class="nav-link active show"  id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">My calendar</a>
+                                    </li>
+                                    <li class="nav-item">
+                                      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Organization calendar</a>
+                                    </li>
+                                    <li class="nav-item mr-auto">
+                                            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">My requests</a>
+                                          </li> 
+                                          <a href="#" class="btn btn__red">Live traning</a>
+                                  </ul>
+                     
+                          <hr> 
+            </section>
+            <section class="tab-content section" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> 
+                <div id='calendar'></div>
+            </div>
+              <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">...</div>
+              <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+
+             <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                              <h5 class="card-title font-weight-bold" style="font-size:18px;">Innovation training</h5>
+                              <h6 class="card-subtitle mb-2 text-muted"  style="font-size:13px;">Pending Admin approval</h6>
+                              <p class="card-text mb-0" style="font-size: 15px;">
+                                  <i class="fas fa-business-time"></i> Request made by motola johnson
+                               
+                              </p>
+                              <p class="mt-1" style="font-size: 14px;"><span class="font-weight-bold">Date</span>:07-Mar-2019</p>
+                              <a href="#" class="card-link" style="font-size: 13px;color:#0a9cb7"><i class="fas fa-check mr-1"></i>Accept</a>
+                              <a href="#" class="card-link" style="font-size: 13px;color:#EC0522"><i class="fas fa-times mr-1"></i>Reject</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                              <h5 class="card-title font-weight-bold" style="font-size:18px;">Innovation training</h5>
+                              <h6 class="card-subtitle mb-2 text-muted"  style="font-size:13px;">Pending Admin approval</h6>
+                              <p class="card-text mb-0" style="font-size: 15px;">
+                                  <i class="fas fa-business-time"></i> Request made by motola johnson
+                               
+                              </p>
+                              <p class="mt-1" style="font-size: 14px;"><span class="font-weight-bold">Date</span>:07-Mar-2019</p>
+                              <a href="#" class="card-link" style="font-size: 13px;color:#0a9cb7"><i class="fas fa-check mr-1"></i>Accept</a>
+                              <a href="#" class="card-link" style="font-size: 13px;color:#EC0522"><i class="fas fa-times mr-1"></i>Reject</a>
+                            </div>
+                          </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                              <h5 class="card-title font-weight-bold" style="font-size:18px;">Innovation training</h5>
+                              <h6 class="card-subtitle mb-2 text-muted"  style="font-size:13px;">Pending Admin approval</h6>
+                              <p class="card-text mb-0" style="font-size: 15px;">
+                                  <i class="fas fa-business-time"></i> Request made by motola johnson
+                               
+                              </p>
+                              <p class="mt-1" style="font-size: 14px;"><span class="font-weight-bold">Date</span>:07-Mar-2019</p>
+                              <a href="#" class="card-link" style="font-size: 13px;color:#0a9cb7"><i class="fas fa-check mr-1"></i>Accept</a>
+                              <a href="#" class="card-link" style="font-size: 13px;color:#EC0522"><i class="fas fa-times mr-1"></i>Reject</a>
+                            </div>
+                          </div>
+                    </div>
+                  </div>
+             </div>
+              </div>
+            </section>
+              <section class="h-65"></section>
+            </main>
+        </div>
+    </div>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+    <script src="js/floating-totop-button.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+$("body").toTopButton({
+  imagePath: './img/icons',
+  arrowType: 'arrow',
+  iconColor: 'w',
+  iconShadow: 4,
+  backgroundColor:'#262626',
+  btnShadow: 4,
+});
+  </script>
+  <script>
+      AOS.init();
+    </script>
+       <script src="js/smartScroll.min.js"></script>
+       <script>
+           (function ($) {
+               "use strict";
+               // all parameters are optional
+               smartScroll.init({
+                   speed: 700, // default 500
+                   addActive: true, // default true
+                   activeClass: "active", // default active
+                   offset: 150 // default 100
+               }, function () {
+                   console.log("callback");
+               });
+           })(jQuery);
+       </script>
+   
+ 
+  </body>
+</html> 
