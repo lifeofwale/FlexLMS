@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #262626;
+      }
+
+      .cls-2 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Vendors" transform="translate(-818 -257)">
+    <g id="Rectangle_724" data-name="Rectangle 724" class="cls-1" transform="translate(818 257)">
+      <rect class="cls-2" width="30" height="30" rx="15"/>
+      <rect class="cls-3" x="0.5" y="0.5" width="29" height="29" rx="14.5"/>
+    </g>
+    <g id="noun_education_199810" transform="translate(813 236.3)">
+      <g id="Group_102" data-name="Group 102" transform="translate(13.1 30.7)">
+        <g id="Group_101" data-name="Group 101" transform="translate(0 0)">
+          <g id="Group_100" data-name="Group 100">
+            <path id="Path_869" data-name="Path 869" d="M38.061,40.664a.265.265,0,0,1-.243.266l-4.413-.846h-.031a.278.278,0,0,1-.274-.274V31.066a.265.265,0,0,1,.243-.266l4.413.846h.031a.278.278,0,0,1,.274.274v8.744Z" transform="translate(-31.532 -30.792)"/>
+            <path id="Path_870" data-name="Path 870" d="M109.961,39.726a.273.273,0,0,1-.274.274h-.031l-4.413.846A.265.265,0,0,1,105,40.58V31.82a.273.273,0,0,1,.274-.274h.031l1.92-.368v2.883a.11.11,0,0,0,.18.078l.752-.8.737.783c0,.008.008.008.008.016h0a.1.1,0,0,0,.11.016h0a.1.1,0,0,0,.071-.094V30.818l.627-.118a.271.271,0,0,1,.243.266v8.759Z" transform="translate(-97.802 -30.7)"/>
+            <path id="Path_871" data-name="Path 871" d="M137.058,49.952v7.027a.585.585,0,0,1-.611.552H132.7l2.555-.439a.9.9,0,0,0,.917-.856V49.4h.274A.585.585,0,0,1,137.058,49.952Z" transform="translate(-123.331 -47.063)"/>
+            <path id="Path_872" data-name="Path 872" d="M17.45,57.531H13.711a.585.585,0,0,1-.611-.552V49.952a.585.585,0,0,1,.611-.552h.274v6.829a.9.9,0,0,0,.909.856Z" transform="translate(-13.1 -47.063)"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

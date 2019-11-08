@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="13.333" viewBox="0 0 20 13.333">
+    <defs>
+        <style>
+            .cls-1{fill:#262626;fill-rule:evenodd}
+        </style>
+    </defs>
+    <g id="menu" transform="translate(-269.75 -83.5)">
+        <g id="menu-2" data-name="menu" transform="translate(-469 -720)">
+            <path id="path" d="M3 19.333h20v-2.222H3v2.222zm0-5.556h20v-2.221H3v2.222zM3 6v2.222h20V6z" class="cls-1" transform="translate(735.75 797.5)"/>
+        </g>
+    </g>
+</svg>

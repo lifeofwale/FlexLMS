@@ -1,0 +1,20 @@
+
+// base css
+@import 'abstracts/variable.scss';
+@import 'abstracts/mixins.scss';
+@import 'base/base.scss';
+@import 'base/animation.scss';
+@import 'base/utilities';
+// mixin
+
+@import 'components/tables.scss';
+// layout css
+@import 'layout/layout.scss';
+@import 'pages/home.scss';
+@import 'pages/courses.scss';
+@import 'pages/profile.scss';
+@import 'pages/exams.scss';
+@import 'pages/exam.scss';
+@import 'pages/404.scss';
+@import 'pages/support.scss';
+

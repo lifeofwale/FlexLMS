@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="213.649" height="168.761" viewBox="0 0 213.649 168.761">
+    <defs>
+        <style>
+            .cls-1{fill:url(#linear-gradient)}.cls-2{fill:#fff}.cls-3,.cls-4,.cls-5{fill:#354c98}.cls-4,.cls-6{opacity:.5}.cls-5,.cls-7{opacity:.2}.cls-10,.cls-6,.cls-7{fill:#6c63ff}.cls-8{fill:#69f0ae}.cls-9{fill:url(#linear-gradient-4)}.cls-11{fill:url(#linear-gradient-7)}.cls-12{fill:url(#linear-gradient-8)}.cls-13{fill:url(#linear-gradient-9)}.cls-14{fill:url(#linear-gradient-10)}.cls-15{fill:url(#linear-gradient-11)}.cls-16{fill:url(#linear-gradient-12)}.cls-17{fill:url(#linear-gradient-13)}.cls-18{fill:url(#linear-gradient-14)}.cls-19{fill:url(#linear-gradient-15)}.cls-20{fill:url(#linear-gradient-16)}.cls-21{fill:url(#linear-gradient-17)}
+        </style>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y1="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="gray" stop-opacity=".251"/>
+            <stop offset=".54" stop-color="gray" stop-opacity=".122"/>
+            <stop offset="1" stop-color="gray" stop-opacity=".102"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-4" y2="-.001" xlink:href="#linear-gradient"/>
+        <linearGradient id="linear-gradient-7" x1="29.773" x2="29.773" y1="26.262" y2="25.263" xlink:href="#linear-gradient"/>
+        <linearGradient id="linear-gradient-8" y1=".999" xlink:href="#linear-gradient"/>
+        <linearGradient id="linear-gradient-9" x1="35.813" x2="35.813" y1="30.815" y2="29.815" xlink:href="#linear-gradient"/>
+        <linearGradient id="linear-gradient-10" x1="39.503" x2="39.503" y1="24.82" y2="23.82" xlink:href="#linear-gradient"/>
+        <linearGradient id="linear-gradient-11" x1="30.785" x2="30.785" y1="19.69" y2="18.69" xlink:href="#linear-gradient"/>
+        <linearGradient id="linear-gradient-12" x1="25.655" x2="25.655" y1="10.971" y2="9.972" xlink:href="#linear-gradient"/>
+        <linearGradient id="linear-gradient-13" x1="25.656" x2="25.656" y1=".713" y2="-.287" xlink:href="#linear-gradient"/>
+        <linearGradient id="linear-gradient-14" x1="40.017" x2="40.017" y1="-13.391" y2="-14.391" xlink:href="#linear-gradient"/>
+        <linearGradient id="linear-gradient-15" x1="50.274" x2="50.274" y1="-13.135" y2="-14.134" xlink:href="#linear-gradient"/>
+        <linearGradient id="linear-gradient-16" x1="58.481" x2="58.481" y1="-8.006" y2="-9.006" xlink:href="#linear-gradient"/>
+        <linearGradient id="linear-gradient-17" x1="63.609" x2="63.609" y1=".2" y2="-.799" xlink:href="#linear-gradient"/>
+    </defs>
+    <g id="undraw_calendar_dutt">
+        <path id="Rectangle_1515" d="M0 0h204.544v135.255H0z" class="cls-1" data-name="Rectangle 1515" transform="translate(9.105)"/>
+        <path id="Rectangle_1516" d="M0 0h200.453v115.184H0z" class="cls-2" data-name="Rectangle 1516" transform="translate(10.895 15.98)"/>
+        <path id="Rectangle_1517" d="M0 0h200.453v13.168H0z" class="cls-3" data-name="Rectangle 1517" transform="translate(10.895 2.812)"/>
+        <path id="Rectangle_1518" d="M0 0h195.339v100.482H0z" class="cls-1" data-name="Rectangle 1518" transform="translate(13.707 24.29)"/>
+        <path id="Rectangle_1519" d="M0 0h23.523v18.792H0z" class="cls-4" data-name="Rectangle 1519" transform="translate(16.136 26.079)"/>
+        <path id="Rectangle_1520" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1520" transform="translate(39.914 26.079)"/>
+        <path id="Rectangle_1521" d="M0 0h23.523v18.792H0z" class="cls-5" data-name="Rectangle 1521" transform="translate(63.692 26.079)"/>
+        <path id="Rectangle_1522" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1522" transform="translate(87.471 26.079)"/>
+        <path id="Rectangle_1523" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1523" transform="translate(111.249 26.079)"/>
+        <path id="Rectangle_1524" d="M0 0h23.523v18.792H0z" class="cls-4" data-name="Rectangle 1524" transform="translate(135.027 26.079)"/>
+        <path id="Rectangle_1525" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1525" transform="translate(158.805 26.079)"/>
+        <path id="Rectangle_1526" d="M0 0h23.523v18.792H0z" class="cls-5" data-name="Rectangle 1526" transform="translate(182.583 26.079)"/>
+        <path id="Rectangle_1527" d="M0 0h23.523v18.792H0z" class="cls-5" data-name="Rectangle 1527" transform="translate(16.136 45.255)"/>
+        <path id="Rectangle_1528" d="M0 0h23.523v18.792H0z" class="cls-5" data-name="Rectangle 1528" transform="translate(39.914 45.255)"/>
+        <path id="Rectangle_1529" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1529" transform="translate(63.692 45.255)"/>
+        <path id="Rectangle_1530" d="M0 0h23.523v18.792H0z" class="cls-4" data-name="Rectangle 1530" transform="translate(87.471 45.255)"/>
+        <path id="Rectangle_1531" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1531" transform="translate(111.249 45.255)"/>
+        <path id="Rectangle_1532" d="M0 0h23.523v18.792H0z" class="cls-5" data-name="Rectangle 1532" transform="translate(135.027 45.255)"/>
+        <path id="Rectangle_1533" d="M0 0h23.523v18.792H0z" class="cls-4" data-name="Rectangle 1533" transform="translate(158.805 45.255)"/>
+        <path id="Rectangle_1534" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1534" transform="translate(182.583 45.255)"/>
+        <path id="Rectangle_1535" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1535" transform="translate(16.136 64.176)"/>
+        <path id="Rectangle_1536" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1536" transform="translate(39.914 64.176)"/>
+        <path id="Rectangle_1537" d="M0 0h23.523v18.792H0z" class="cls-5" data-name="Rectangle 1537" transform="translate(63.692 64.176)"/>
+        <path id="Rectangle_1538" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1538" transform="translate(87.471 64.176)"/>
+        <path id="Rectangle_1539" d="M0 0h23.523v18.792H0z" class="cls-5" data-name="Rectangle 1539" transform="translate(111.249 64.176)"/>
+        <path id="Rectangle_1540" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1540" transform="translate(135.027 64.176)"/>
+        <path id="Rectangle_1541" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1541" transform="translate(158.805 64.176)"/>
+        <path id="Rectangle_1542" d="M0 0h23.523v18.792H0z" class="cls-5" data-name="Rectangle 1542" transform="translate(182.583 64.176)"/>
+        <path id="Rectangle_1543" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1543" transform="translate(16.136 83.096)"/>
+        <path id="Rectangle_1544" d="M0 0h23.523v18.792H0z" class="cls-4" data-name="Rectangle 1544" transform="translate(39.914 83.096)"/>
+        <path id="Rectangle_1545" d="M0 0h23.523v18.792H0z" class="cls-4" data-name="Rectangle 1545" transform="translate(63.692 83.096)"/>
+        <path id="Rectangle_1546" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1546" transform="translate(87.471 83.096)"/>
+        <path id="Rectangle_1547" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1547" transform="translate(111.249 83.096)"/>
+        <path id="Rectangle_1548" d="M0 0h23.523v18.792H0z" class="cls-4" data-name="Rectangle 1548" transform="translate(135.027 83.096)"/>
+        <path id="Rectangle_1549" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1549" transform="translate(158.805 83.096)"/>
+        <path id="Rectangle_1550" d="M0 0h23.523v18.792H0z" class="cls-4" data-name="Rectangle 1550" transform="translate(182.583 83.096)"/>
+        <path id="Rectangle_1551" d="M0 0h23.523v18.792H0z" class="cls-6" data-name="Rectangle 1551" transform="translate(16.136 102.272)"/>
+        <path id="Rectangle_1552" d="M0 0h23.523v18.792H0z" class="cls-7" data-name="Rectangle 1552" transform="translate(39.914 102.272)"/>
+        <path id="Rectangle_1553" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1553" transform="translate(63.692 102.272)"/>
+        <path id="Rectangle_1554" d="M0 0h23.523v18.792H0z" class="cls-4" data-name="Rectangle 1554" transform="translate(87.471 102.272)"/>
+        <path id="Rectangle_1555" d="M0 0h23.523v18.792H0z" class="cls-5" data-name="Rectangle 1555" transform="translate(111.249 102.272)"/>
+        <path id="Rectangle_1556" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1556" transform="translate(135.027 102.272)"/>
+        <path id="Rectangle_1557" d="M0 0h23.523v18.792H0z" class="cls-5" data-name="Rectangle 1557" transform="translate(158.805 102.272)"/>
+        <path id="Rectangle_1558" d="M0 0h23.523v18.792H0z" class="cls-2" data-name="Rectangle 1558" transform="translate(182.583 102.272)"/>
+        <path id="Rectangle_1559" d="M0 0h7.159v7.159H0z" class="cls-8" data-name="Rectangle 1559" transform="translate(18.054 65.965)"/>
+        <path id="Rectangle_1560" d="M0 0h7.159v7.159H0z" class="cls-8" data-name="Rectangle 1560" transform="translate(89.132 28.125)"/>
+        <path id="Rectangle_1561" d="M0 0h7.159v7.159H0z" class="cls-8" data-name="Rectangle 1561" transform="translate(88.365 65.965)"/>
+        <path id="Rectangle_1562" d="M0 0h7.159v7.159H0z" class="cls-8" data-name="Rectangle 1562" transform="translate(112.655 84.119)"/>
+        <path id="Rectangle_1563" d="M0 0h7.159v7.159H0z" class="cls-8" data-name="Rectangle 1563" transform="translate(159.956 65.965)"/>
+        <circle id="Ellipse_255" cx="43.862" cy="43.862" r="43.862" class="cls-1" data-name="Ellipse 255" transform="translate(0 81.038)"/>
+        <circle id="Ellipse_256" cx="42.678" cy="42.678" r="42.678" class="cls-3" data-name="Ellipse 256" transform="translate(1.184 82.221)"/>
+        <circle id="Ellipse_257" cx="34.675" cy="34.675" r="34.675" class="cls-2" data-name="Ellipse 257" transform="translate(9.187 90.224)"/>
+        <circle id="Ellipse_258" cx="2.074" cy="2.074" r="2.074" class="cls-9" data-name="Ellipse 258" transform="translate(41.788 122.826)"/>
+        <path id="Line_34" d="M11.263 0L0 26.673" class="cls-10" data-name="Line 34" transform="translate(44.158 98.227)"/>
+        <path id="Path_1451" d="M170.888 409.858l-1.278-.43 11.506-26.928 1.278.6z" class="cls-1" data-name="Path 1451" transform="translate(-126.244 -284.703)"/>
+        <path id="Rectangle_1564" d="M0 0h28.953v.89H0z" class="cls-10" data-name="Rectangle 1564" transform="rotate(-67.1 115.912 29.399)"/>
+        <path id="Line_35" d="M0 0l7.41 13.633" class="cls-10" data-name="Line 35" transform="translate(44.158 125.196)"/>
+        <path id="Path_1452" d="M178.025 502.818l-7.415-13.807 1.023-.511 7.67 13.551z" class="cls-1" data-name="Path 1452" transform="translate(-126.988 -363.6)"/>
+        <path id="Rectangle_1565" d="M0 0h.89v15.517H0z" class="cls-10" data-name="Rectangle 1565" transform="rotate(-28.52 268.615 -23.39)"/>
+        <circle id="Ellipse_259" cx=".89" cy=".89" r=".89" class="cls-10" data-name="Ellipse 259" transform="translate(75.277 124.9)"/>
+        <circle id="Ellipse_260" cx="1.156" cy="1.156" r="1.156" class="cls-11" data-name="Ellipse 260" transform="rotate(-60 101.926 42.153)"/>
+        <circle id="Ellipse_261" cx="1.156" cy="1.156" r="1.156" class="cls-12" data-name="Ellipse 261" transform="rotate(-30 271.229 43.17)"/>
+        <circle id="Ellipse_262" cx="1.156" cy="1.156" r="1.156" class="cls-13" data-name="Ellipse 262" transform="translate(10.404 124.634)"/>
+        <circle id="Ellipse_263" cx="1.156" cy="1.156" r="1.156" class="cls-14" data-name="Ellipse 263" transform="rotate(-30 193.471 -.662)"/>
+        <circle id="Ellipse_264" cx="1.156" cy="1.156" r="1.156" class="cls-15" data-name="Ellipse 264" transform="rotate(-30 193.733 -32.6)"/>
+        <circle id="Ellipse_265" cx="1.156" cy="1.156" r="1.156" class="cls-16" data-name="Ellipse 265" transform="rotate(-30 209.477 -60.389)"/>
+        <circle id="Ellipse_266" cx="1.156" cy="1.156" r="1.156" class="cls-17" data-name="Ellipse 266" transform="rotate(-30 237.528 -76.58)"/>
+        <circle id="Ellipse_267" cx="1.156" cy="1.156" r="1.156" class="cls-18" data-name="Ellipse 267" transform="rotate(-30 298.765 -59.582)"/>
+        <circle id="Ellipse_268" cx="1.156" cy="1.156" r="1.156" class="cls-19" data-name="Ellipse 268" transform="rotate(-30 314.257 -31.127)"/>
+        <circle id="Ellipse_269" cx="1.156" cy="1.156" r="1.156" class="cls-20" data-name="Ellipse 269" transform="rotate(-30 313.19 -.589)"/>
+        <circle id="Ellipse_270" cx="1.156" cy="1.156" r="1.156" class="cls-21" data-name="Ellipse 270" transform="rotate(-30 298.847 26.388)"/>
+        <circle id="Ellipse_271" cx=".89" cy=".89" r=".89" class="cls-8" data-name="Ellipse 271" transform="translate(42.972 92.001)"/>
+        <circle id="Ellipse_272" cx=".89" cy=".89" r=".89" class="cls-8" data-name="Ellipse 272" transform="rotate(-60 113.766 -2.041)"/>
+        <circle id="Ellipse_273" cx=".89" cy=".89" r=".89" class="cls-8" data-name="Ellipse 273" transform="rotate(-30 237.777 -77.02)"/>
+        <circle id="Ellipse_274" cx=".89" cy=".89" r=".89" class="cls-8" data-name="Ellipse 274" transform="rotate(-60 158.192 10.294)"/>
+        <circle id="Ellipse_275" cx=".89" cy=".89" r=".89" class="cls-8" data-name="Ellipse 275" transform="rotate(-30 314.505 -31.787)"/>
+        <circle id="Ellipse_276" cx=".89" cy=".89" r=".89" class="cls-8" data-name="Ellipse 276" transform="rotate(-30 194.057 -1.287)"/>
+        <circle id="Ellipse_277" cx=".89" cy=".89" r=".89" class="cls-8" data-name="Ellipse 277" transform="rotate(-60 102.053 41.682)"/>
+        <circle id="Ellipse_278" cx="1.156" cy="1.156" r="1.156" class="cls-8" data-name="Ellipse 278" transform="rotate(-30 271.274 -76.434)"/>
+        <circle id="Ellipse_279" cx=".89" cy=".89" r=".89" class="cls-8" data-name="Ellipse 279" transform="rotate(-30 271.591 42.54)"/>
+        <circle id="Ellipse_280" cx=".89" cy=".89" r=".89" class="cls-8" data-name="Ellipse 280" transform="rotate(-60 146.693 53.21)"/>
+        <circle id="Ellipse_281" cx=".89" cy=".89" r=".89" class="cls-8" data-name="Ellipse 281" transform="translate(10.67 124.9)"/>
+        <circle id="Ellipse_282" cx=".89" cy=".89" r=".89" class="cls-8" data-name="Ellipse 282" transform="translate(42.972 156.016)"/>
+        <path id="Path_1453" d="M219.91 509.953a34.68 34.68 0 0 1 64.758-17.253 34.68 34.68 0 1 0-61.946 30.953 34.558 34.558 0 0 1-2.812-13.7z" class="cls-7" data-name="Path 1453" transform="translate(-208.944 -381.794)"/>
+        <circle id="Ellipse_283" cx="1.483" cy="1.483" r="1.483" class="cls-8" data-name="Ellipse 283" transform="translate(42.379 123.417)"/>
+    </g>
+</svg>

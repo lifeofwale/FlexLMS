@@ -1,0 +1,28 @@
+.profile{
+    h2{
+        font-size: 2.6rem;
+        font-weight: 300;
+    }
+    &__userimage{
+        width: 15.3rem;
+        height: 15.3rem;
+        object-fit: contain;
+        border-radius: 50%;
+        margin: 0 auto;
+        clip-path: circle();
+        position: relative;
+        img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 14.5rem;
+            height: 14.5rem;
+            border-radius: 50%;
+        }
+    }
+    &__bg{
+        background-image: url('../img/profile_bg.svg');
+        background-repeat: no-repeat;
+        background-position: bottom right;
+    }
+}

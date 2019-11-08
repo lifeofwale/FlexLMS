@@ -1,0 +1,106 @@
+.support{
+    padding:3rem;
+   
+    h2{
+        font-size: 2.6rem;
+        font-weight: 300;
+        margin:2.3rem 0rem;
+    }
+    sup{
+        color:#db353a;
+    }
+    label{
+        font-size: 15px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.4;
+    }
+    &__card{
+        border:0;
+        background-color: transparent;
+      
+    }
+    &__cardheader{
+        background-color: transparent;
+        padding:1rem 0rem;
+        button{
+            padding-left:0;
+            font-size :1.6rem;
+            color:inherit;
+            background-color: transparent;
+
+            &:focus{
+                box-shadow: none; 
+            }
+            @media only screen and(max-width:414px){
+                font-size: 1.3rem;
+            }
+        }
+
+    }
+    &__cardbody{
+        background-color: #f4f5f7;
+        font-weight: 600;
+        font-size: 1.6rem;
+        padding:2.2rem 1.4rem;
+        
+    }
+
+    
+    &__input{
+       
+        height: 5.4rem;
+        border-radius: 2px;
+        border: solid 1px rgba(92, 92, 92, 0.3);
+        background-color: #fcfcfc;
+        font-size:16px;
+        &::placeholder{
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: left;
+            color: #e5e5e5;
+        }
+
+        &:focus{
+            box-shadow: none;
+            border-color: #db353a;
+        }
+    }
+    &__input--m{
+       position: relative;
+        
+    }
+    &__input--m2{
+        opacity: 0;
+    }
+    &__select{
+        height: 5.4rem;
+        border-radius: 2px;
+        border: solid 1px rgba(92, 92, 92, 0.3);
+        background-color: #fcfcfc;
+        font-size: 16px;
+        line-height: 1.5;
+        text-align: left;
+       color: #e5e5e5;
+       &:focus{
+        box-shadow: none;
+        border-color: #db353a;
+    }
+    }
+
+    &__textarea{
+        border-radius: 2px;
+  border: solid 1px rgba(92, 92, 92, 0.3);
+  background-color: #fcfcfc;
+    }
+
+}
+button[data-toggle="collapse"][aria-expanded="true"] > .js-rotate-if-collapsed
+{
+    -webkit-transform: rotate(150deg);
+    -moz-transform:    rotate(150deg);
+    -ms-transform:     rotate(150deg);
+    -o-transform:      rotate(150deg);
+    transform:         rotate(150deg);
+}

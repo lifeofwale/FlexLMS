@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #262626;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="login_icon_hover" data-name="login icon hover" transform="translate(-1292 -40)">
+    <circle id="Ellipse_35" data-name="Ellipse 35" class="cls-1" cx="15" cy="15" r="15" transform="translate(1292 40)"/>
+    <path id="ic_person_24px" class="cls-2" d="M9.652,9.652A2.826,2.826,0,1,0,6.826,6.826,2.825,2.825,0,0,0,9.652,9.652Zm0,1.413C7.766,11.065,4,12.012,4,13.891V15.3H15.3V13.891C15.3,12.012,11.538,11.065,9.652,11.065Z" transform="translate(1297.348 45.348)"/>
+  </g>
+</svg>

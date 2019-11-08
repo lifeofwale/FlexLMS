@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <defs>
+        <style>
+            .cls-1{fill:#262626}
+        </style>
+    </defs>
+    <g id="ic_play_circle_filled_24px" transform="translate(-346 -413)">
+        <path id="ic_play_circle_filled_24px-2" d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm-2 14.5v-9l6 4.5z" class="cls-1" data-name="ic_play_circle_filled_24px" transform="translate(344 411)"/>
+    </g>
+</svg>

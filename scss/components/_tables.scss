@@ -1,0 +1,126 @@
+
+.tabletype{
+
+    @media only screen and (max-width: 900px) {
+        max-width:375px;
+        overflow-x:scroll;
+    }
+    thead{
+        border:0px;
+        font-size: 10px;
+        color:#354c98;
+        font-size: 13px;
+  font-weight: 600;
+        th{
+            border:0;
+            padding-top:1.4rem;
+            padding-bottom:1.4rem;
+        }
+    }
+    strong{
+        font-size: 1.5rem;
+  font-weight: 600;
+    }
+    tbody{
+        
+        tr{
+
+            &:hover{
+                  background-color: rgba(10, 156, 183, 0.1) !important;
+                  border-left: 2px solid #0a9cb7 !important;
+            }
+        }
+    }
+        td{
+            padding-top:1.4rem;
+            padding-bottom:1.4rem;
+           
+
+ }
+ &__td-rel{
+     position: relative !important;
+ }
+ &__td-abs{
+     position: absolute;
+     right:5%;
+     left:auto;
+     top:28%;
+     p{
+         font-size: 13px;
+     }
+ }
+
+ &__modal-dialog {
+    @media (min-width: 992px){
+        max-width:  761px;
+       
+    }
+ }
+ &__modal-header{
+     background-color: $text__red;
+     padding:1.8rem 2.9rem;
+   
+ }
+
+ &__modal-title{
+    font-size: 2.6rem;
+    font-weight: 300;
+    color:#fff;
+ }
+ &__modal-deets{
+    max-width: 637.2px;
+    min-height: 301.3px;
+    border: solid 1px #e6e6e6;
+    margin:2.8rem auto;
+ }
+ &__modal-card{
+     border:none;
+    height: 14.8rem;
+    box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.08);
+    p{
+        font-size: 2.8rem;
+        font-weight: bold;
+    }
+ }
+ &__modal-body{
+    padding:1rem 1rem;
+ }
+}
+// pagination
+.pag{
+    p{
+        font-size: 14px;
+    }
+    a{
+        color:$text__red;
+        font-size: 14px;
+        &.page-link{
+          
+            &:hover{
+                border-color:$text__red;
+                color:#fff;
+                background-color: $text__red;
+                opacity:.8;
+            }
+           
+        }
+    }
+    
+   .active{
+
+       .page-link{
+           border-color:$text__red;
+           background-color: $text__red;
+           &:hover{
+               opacity:.8;
+           }
+          
+       }
+   }
+   .page-link{
+    width: 40px;
+    height: 40px;
+    margin-left:4px;
+    
+   }
+}
